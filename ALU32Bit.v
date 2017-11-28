@@ -2,7 +2,7 @@ module ALU32Bit(clk, data1, data2, ALUControl, shiftAmount, overFlow, ALUResult)
 
 input wire clk;
 input wire signed [31:0] data1,data2;
-input wire [4:0] ALUControl;
+input wire [3:0] ALUControl;
 input wire [4:0] shiftAmount;
 output reg overFlow;
 output reg signed [31:0] ALUResult;
@@ -19,7 +19,6 @@ parameter SHFT_R_L = 4'b0101;
 parameter SHFT_R_A = 4'b0110;
 parameter GREATER = 4'b0111;
 parameter LESS = 4'b1000;
-parameter SETLESSTHAN = 4'b1001;
 
 always @(posedge clk)
 begin
