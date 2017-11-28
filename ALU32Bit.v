@@ -19,6 +19,7 @@ parameter SHFT_R_L = 4'b0101;
 parameter SHFT_R_A = 4'b0110;
 parameter GREATER = 4'b0111;
 parameter LESS = 4'b1000;
+parameter NOR = 4'b1001;
 
 always @(posedge clk)
 begin
@@ -71,6 +72,11 @@ LESS:
 	ALUResult <= 1;
 	else
 	ALUResult <= 0;
+	end
+
+NOR:
+	begin
+	ALUResult <= data1 ~| data2;
 	end
 
 endcase
