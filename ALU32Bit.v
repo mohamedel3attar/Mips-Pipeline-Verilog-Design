@@ -76,7 +76,7 @@ LESS:
 
 NOR:
 	begin
-	ALUResult <= data1 ~| data2;
+	ALUResult <= ~(data1 | data2);
 	end
 
 endcase
