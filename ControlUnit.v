@@ -1,5 +1,6 @@
-module controlUnit (opcode,RegDst,branch,Memread,MemtoReg,ALUop,
+module ControlUnit (opcode,RegDst,branch,Memread,MemtoReg,ALUop,
                    MemWrite,AluSrc,RegWrite);
+  
   input [5:0] opcode;
   output reg RegDst,branch,Memread,MemtoReg,MemWrite,AluSrc,RegWrite;
   output reg [1:0] ALUop;
