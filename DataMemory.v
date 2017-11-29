@@ -1,4 +1,4 @@
-module Data_memory (MemWrite,Memread,address,writeData,clk,readData);
+module DataMemory (MemWrite,Memread,address,writeData,clk,readData);
   reg[31:0] memory [0:31];
   input MemWrite,Memread,clk;
   input [31:0] address,writeData;
