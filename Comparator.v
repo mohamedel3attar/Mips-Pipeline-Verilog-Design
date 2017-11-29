@@ -1,4 +1,4 @@
-module EqualChecker(inData1 ,inData2 ,equalFlag);
+module Comparator(inData1 ,inData2 ,equalFlag);
 
 input [31:0]  inData1;
 input [31:0]  inData2;
