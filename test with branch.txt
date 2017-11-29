@@ -1,0 +1,74 @@
+module instruction_mem (readdata);
+reg clk,branch;
+reg [5:0] branchamount;
+reg  [31:0] pc;
+ reg [31:0] Imemory [0:1023];
+output reg [31:0] readdata;
+always @ (posedge clk)
+	begin
+		if (branch==1)
+	readdata <= Imemory[((pc+4)>>2 )+branchamount];	 
+	else if (branch==0)
+		readdata<= Imemory[pc>>2];
+		
+	end				  
+	
+	
+initial begin
+		$monitor ("%b  %b ",pc,readdata);
+		Imemory[0]=32'b0000_0000_0000_0000_0000_0000_0000_0001;
+		Imemory[1]=32'b0000_0000_0000_0000_0000_0000_0000_0010;
+		Imemory[2]=32'b0000_0000_0000_0000_0000_0000_0000_1000;
+		Imemory[3]=32'b0000_0000_0000_0000_0000_0000_0001_0000;
+		Imemory[4]=32'b0000_0000_0000_0000_0000_0000_0010_0000;
+		Imemory[5]=32'b0000_0000_0000_0000_0000_0000_0100_0000;
+		Imemory[6]=32'b0000_0000_0000_0000_0000_0000_1000_0000;	  
+		clk<=0;
+		pc<=0;
+		branch=0;
+		branchamount=0;				   
+		#10
+		clk=1;
+		#10
+		clk=0;
+		#11			   
+		pc=8;
+		clk=1;
+		#15
+		pc=16	;
+#1
+clk=0;
+#1
+clk=1;
+#5
+pc=8;
+branch=1;
+branchamount=2;
+clk=0;
+#5
+clk=1;
+
+
+		
+		
+	end
+	
+		
+		
+		
+		
+		
+	
+endmodule	
+		
+		
+		
+		
+	
+
+	
+
+
+
+
+
