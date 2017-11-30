@@ -15,21 +15,15 @@ always @(Reset)
         currentPC_out <= 32'h00000000;
         nextPC_out <= 32'h00000000;
       end
-    else if(Reset == 0)
-      begin
-        nextPC_out <= nextPC_reg;
-        currentPC_out <= currentPC_reg;
-        instrOut <= instrOut_reg;
-      end
   end
   
   always @(posedge clk)
     begin
       if(WriteEnable)
         begin
-         nextPC_out <= nextPC_in;
-         currentPC_out <= currentPC_in;
-         instrOut <= instrIn;
+         nextPC_out <= nextPC_reg;
+         currentPC_out <= currentPC_reg;
+         instrOut <= instrIn_reg;
         end
   end
   
