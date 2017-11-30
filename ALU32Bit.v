@@ -2,7 +2,7 @@ module ALU32Bit(clk, data1, data2, ALUControl, shiftAmount, overFlow, zero, ALUR
 
 input wire clk;
 input wire signed [31:0] data1,data2;
-input wire [2:0] ALUControl;
+input wire [3:0] ALUControl;
 input wire [4:0] shiftAmount;
 output reg overFlow, zero;
 output reg signed [31:0] ALUResult;
