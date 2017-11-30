@@ -1,10 +1,10 @@
-module ALU32Bit(clk, data1, data2, ALUControl, shiftAmount, overFlow, ALUResult);
+module ALU32Bit(clk, data1, data2, ALUControl, shiftAmount, overFlow, zero, ALUResult);
 
 input wire clk;
 input wire signed [31:0] data1,data2;
 input wire [3:0] ALUControl;
 input wire [4:0] shiftAmount;
-output reg overFlow;
+output reg overFlow, zero;
 output reg signed [31:0] ALUResult;
 
 wire [31:0] neg_data2;
@@ -23,6 +23,12 @@ parameter NOR = 4'b1001;
 
 always @(posedge clk)
 begin
+
+if(data1 == data2)
+zero <= 1'b1;
+else
+zero <= 1'b0;
+
 case(ALUControl)
 
 ADD: 
