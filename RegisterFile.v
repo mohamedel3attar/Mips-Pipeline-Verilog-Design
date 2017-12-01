@@ -1,14 +1,15 @@
-module RegisterFile(ReadReg1, ReadReg2, WriteReg, WriteData, RegWrite, Clk, ReadData1, ReadData2);
+module RegisterFile(ReadReg1, ReadReg2, WriteReg, WriteData, RegWrite, Clk, ReadData1, ReadData2, reset);
 
 
 	input [4:0] ReadReg1 ,ReadReg2 ,WriteReg;
 	input [31:0] WriteData;
-	input RegWrite ,Clk;
+	input RegWrite ,Clk, reset;
 	output reg [31:0] ReadData1 ,ReadData2;
 
 	reg [31:0] memory[0:31];
 
-	initial begin
+	always @(posedge reset) 
+		begin
 		memory[0] <= 32'h00000000;
 		memory[8] <= 32'h00000001;//for testing
 		memory[9] <= 32'h00000002;//for testing
@@ -30,7 +31,7 @@ module RegisterFile(ReadReg1, ReadReg2, WriteReg, WriteData, RegWrite, Clk, Read
 		memory[25] <= 32'h00000000;
 		memory[29] <= 32'd252; // this value should point to the top of data memory, dont forget byte addressing
 		memory[31] <= 32'b0;
-	end
+		end
 
 	always @(ReadReg1, ReadReg2)
 	begin
