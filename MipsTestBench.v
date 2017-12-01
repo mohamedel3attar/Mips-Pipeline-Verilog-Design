@@ -5,7 +5,7 @@ wire [31:0] nextPC, readPC, instruction, PCPlus4, regWriteData, registerData1, r
 		signExtendOut, ALUData2MuxOut, ALUResult, memReadData, shiftOut, branchNewPC;
 wire [4:0] writeRegister;
 wire [3:0] ALUControl;
-wire [1:0] ALUOp;
+wire [3:0] ALUOp;
 
 //modules instances
 PC PCRegister(nextPC ,readPC ,reset , clk);
