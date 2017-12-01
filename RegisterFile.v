@@ -11,9 +11,9 @@ module RegisterFile(ReadReg1, ReadReg2, WriteReg, WriteData, RegWrite, Clk, Read
 	always @(posedge Clk)
 	begin
 		if (RegWrite == 1)
-		  begin
-			   memory[WriteReg] <= WriteData;
-      end
+		begin
+			memory[WriteReg] <= WriteData;
+		end
 	end
 
 	always @(negedge Clk)
