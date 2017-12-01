@@ -1,6 +1,6 @@
-module ALU32Bit(clk, data1, data2, ALUControl, shiftAmount, overFlow, zero, ALUResult);
+module ALU32Bit(clk, data1, data2, ALUControl, shiftAmount, overFlow, zero, ALUResult, reset);
 
-input wire clk;
+input wire clk, reset;
 input wire signed [31:0] data1,data2;
 input wire [3:0] ALUControl;
 input wire [4:0] shiftAmount;
@@ -21,7 +21,7 @@ parameter GREATER = 4'b0111;
 parameter LESS = 4'b1000;
 parameter NOR = 4'b1001;
 
-initial zero <= 1'b0;
+always @(posedge reset) zero <= 1'b0;
 
 always @(ALUControl, data1, data2)
 begin
