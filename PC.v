@@ -5,11 +5,11 @@ input Reset ,clk;
 reg [31:0] currentPC;
 output reg [31:0] outPC;
 
-initial currentPC <= 32'h00000000;
+always@(posedge Reset) currentPC <= 32'h00000000;
   
 always @(posedge clk)
   begin
-  outPC <= currentPC;
+        outPC <= currentPC;
 	#1
 	currentPC <= nextPC;
   end
