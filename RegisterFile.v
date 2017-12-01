@@ -32,14 +32,13 @@ module RegisterFile(ReadReg1, ReadReg2, WriteReg, WriteData, RegWrite, Clk, Read
 		memory[31] <= 32'b0;
 	end
 
-	always @(posedge Clk)
+	always @(ReadReg1, ReadReg2)
 	begin
-		#1
 		ReadData1 <= memory[ReadReg1];
   		ReadData2 <= memory[ReadReg2];
 	end
 
-	always @(negedge Clk)
+	always @(posedge Clk)
   	begin
   		if (RegWrite == 1)
 		begin
