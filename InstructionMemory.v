@@ -11,7 +11,7 @@ initial //for testing
 	end
 
 
-always @ (posedge clk)
+always @ (pc)
 	
 	begin	 
 	readdata <= Imemory[pc>>2];
