@@ -10,6 +10,19 @@ module ControlUnit (opcode,RegDst,branch,Memread,MemtoReg,ALUop,
   parameter lw=6'b100011;
   parameter sw=6'b101011;
   parameter beq=6'b000100;
+
+  initial
+  begin
+   RegDst <= 1'b0;
+   branch <= 1'b0;
+   Memread <= 1'b0;
+   MemtoReg <= 1'b0;
+   ALUop <= 1'b0;
+   MemWrite <= 1'b0;
+   AluSrc <= 1'b0;
+   RegWrite <= 1'b0;
+  end
+
   always@(opcode)
     begin
       case (opcode)
