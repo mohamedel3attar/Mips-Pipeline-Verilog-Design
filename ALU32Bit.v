@@ -21,7 +21,9 @@ parameter GREATER = 4'b0111;
 parameter LESS = 4'b1000;
 parameter NOR = 4'b1001;
 
-always @(posedge clk)
+initial zero <= 1'b0;
+
+always @(ALUControl, data1, data2)
 begin
 
 if(data1 == data2)
