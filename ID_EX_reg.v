@@ -11,11 +11,11 @@ module ID_EX_reg ( currentPC_in ,nextPC_in ,ReadData1_in ,ReadData2_in ,SignExte
   
   always @(posedge clk)
     begin
-      currentPC_out <= currentPC_out;
-      nextPC_out <= nextPC_out ;
-      ReadData1_out <= ReadData1_out;
-      ReadData2_out <= ReadData2_out;
-      SignExtendResult_out <= SignExtendResult_out;
+      currentPC_out <= currentPC_in;
+      nextPC_out <= nextPC_in ;
+      ReadData1_out <= ReadData1_in;
+      ReadData2_out <= ReadData2_in;
+      SignExtendResult_out <= SignExtendResult_in;
       instr_out <= instr_in;
       rsOut <= instr_in[25:21];
       rtOut <= instr_in[20:15];
