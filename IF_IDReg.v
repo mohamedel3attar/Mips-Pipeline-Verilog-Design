@@ -16,7 +16,7 @@ input clk ,hold,IF_flush;
       instrOut <= instrIn;
           
       end
-      else if (IF_flush==1)
+      else if (IF_flush==1'b1)
         begin
           PCplus4Out<=32'bx;  //Try 32'b0 instead of 32'bx if there is error
           instrOut<=32'bx;
