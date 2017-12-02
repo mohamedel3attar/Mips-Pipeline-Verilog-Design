@@ -2,10 +2,10 @@ module ID_EX_reg (WBreg,Mreg,EXreg, PCplus4 ,ReadData1_in ,ReadData2_in, ,SignEx
   
   input wire [1:0] WBreg; //contains RegWrite & MemtoReg 
   input wire [1:0] Mreg; //contains Memwrite & Memread
-  input wire [3:0] EXreg; //contains ALUSrc, ALUOp & RegDst
+  input wire [2:0] EXreg; //contains ALUSrc, ALUOp & RegDst
   output reg [1:0] WBregOut;
   output reg [1:0] MregOut;
-  output reg [3:0] EXregOut;
+  output reg [2:0] EXregOut;
 
   input wire [31:0] PCplus4 ,ReadData1_in ,ReadData2_in ,instr_in ,SignExtendResult_in;
   input wire clk;
