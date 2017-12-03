@@ -1,4 +1,4 @@
-module forwardingUnit (EX_MemRegwrite,EX_MemWriteReg,Mem_WbRegwrite,Mem_WbWriteReg,ID_Ex_Rs,ID_Ex_Rt,upperMux_sel,lowerMux_sel, comparatorMux1Selector,comparatorMux2Selector);
+module ForwardingUnit (EX_MemRegwrite,EX_MemWriteReg,Mem_WbRegwrite,Mem_WbWriteReg,ID_Ex_Rs,ID_Ex_Rt,upperMux_sel,lowerMux_sel, comparatorMux1Selector,comparatorMux2Selector);
   
   input EX_MemRegwrite, Mem_WbRegwrite;
   input [4:0] EX_MemWriteReg , Mem_WbWriteReg, ID_Ex_Rs, ID_Ex_Rt;
