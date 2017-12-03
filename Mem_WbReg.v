@@ -1,17 +1,17 @@
-module Mem_WbReg (WBreg,ALUresult,clk,readData,writeReg,RegWrite,MemtoReg,readDataOut,ALUresultOut,writeRegOut);
+module Mem_WbReg(RegWrite, MemtoReg,ALUresult,clk,readData,writeReg,RegWriteOut,MemtoRegOut,readDataOut,ALUresultOut,writeRegOut);
   
   input clk;
-  input [1:0] WBreg; //contains RegWrite & MemtoReg
+  input [1:0] RegWrite, MemtoReg;
   input [4:0] writeReg;
   input [31:0] ALUresult, readData;
-  output reg RegWrite, MemtoReg;
+  output reg RegWriteOut, MemtoRegOut;
   output reg [31:0] readDataOut,ALUresultOut;
   output reg [4:0] writeRegOut;
   
   always@(posedge clk)
     begin
-      RegWrite<=WBreg[0];
-      MemtoReg<=WBreg[1];
+      RegWriteOut<=RegWrite;
+      MemtoRegOut<=MemtoReg;
       readDataOut<=readData;
       ALUresultOut<=ALUresult;
       writeRegOut<=writeReg;
