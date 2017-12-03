@@ -29,8 +29,8 @@ module ID_EX_reg (RegWrite, MemtoReg, MemWrite, MemRead,ALUSrc, ALUOp, RegDst, P
       rtOut <= regAddresss_in[9:5];
       rdOut <= regAddresss_in[4:0];
       RegWriteOut <= RegWrite;
-      MemtoRegOut <= MemtoRegOut;
-      MemWriteOut <= MemWriteOut;
+      MemtoRegOut <= MemtoReg;
+      MemWriteOut <= MemWrite;
       MemReadOut <= MemRead;
       ALUSrcOut <= ALUSrc;
       ALUOpOut <= ALUOp;
