@@ -8,7 +8,7 @@ module ForwardingUnit (EX_MemRegwrite,EX_MemWriteReg,Mem_WbRegwrite,Mem_WbWriteR
   always@(EX_MemRegwrite or EX_MemWriteReg or Mem_WbRegwrite or Mem_WbWriteReg or ID_Ex_Rs or ID_Ex_Rt)
     
     begin
-      if(EX_MemRegwrite && EX_MemWriteReg!=0)  //forwarding from ALU to ALU & from ALU to ID stage
+      if(EX_MemRegwrite && EX_MemWriteReg)  //forwarding from ALU to ALU & from ALU to ID stage
         begin
           if (EX_MemWriteReg==ID_Ex_Rs)
             begin
@@ -25,7 +25,7 @@ module ForwardingUnit (EX_MemRegwrite,EX_MemWriteReg,Mem_WbRegwrite,Mem_WbWriteR
             
         end
       
-      else if (Mem_WbRegwrite && Mem_WbWriteReg !=0)   //forwarding from Memorystage to ALU & from Memorystage to ID stage
+      else if (Mem_WbRegwrite && Mem_WbWriteReg)   //forwarding from Memorystage to ALU & from Memorystage to ID stage
         begin
           if (Mem_WbWriteReg==ID_Ex_Rs && EX_MemWriteReg!=ID_Ex_Rs)
             begin
@@ -57,8 +57,5 @@ module ForwardingUnit (EX_MemRegwrite,EX_MemWriteReg,Mem_WbRegwrite,Mem_WbWriteR
       
       
     end
-  
-  
-  
   
 endmodule
