@@ -1,4 +1,4 @@
-module Hazard_Detection_Unit (ID_ExMemRead,EX_MemMemRead,ID_Ex_Rt,IF_ID_Instr,holdPC,holdIF_ID,muxSelector);
+module HazardDetectionUnit (ID_ExMemRead,EX_MemMemRead,ID_Ex_Rt,IF_ID_Instr,holdPC,holdIF_ID,muxSelector);
   
   input ID_ExMemRead,EX_MemMemRead;
   input [4:0] ID_Ex_Rt;
