@@ -1,7 +1,7 @@
 module Mem_WbReg(RegWrite, MemtoReg,ALUresult,clk,readData,writeReg,RegWriteOut,MemtoRegOut,readDataOut,ALUresultOut,writeRegOut);
   
   input clk;
-  input [1:0] RegWrite, MemtoReg;
+  input RegWrite, MemtoReg;
   input [4:0] writeReg;
   input [31:0] ALUresult, readData;
   output reg RegWriteOut, MemtoRegOut;
