@@ -14,31 +14,52 @@ module ForwardingUnit (EX_MemRegwrite,EX_MemWriteReg,Mem_WbRegwrite,Mem_WbWriteR
             begin
             
             upperMux_sel<=2'b10;
-            comparatorMux1Selector<=2'b10;
+            comparatorMux1Selector<=2'b01;
             end
+          else //no forwarding
+          begin
+          upperMux_sel<=2'b00;
+          comparatorMux1Selector<=2'b00;
+          end
             
           if(EX_MemWriteReg==ID_Ex_Rt)
               begin
             lowerMux_sel<=2'b10;
-            comparatorMux2Selector<=2'b10;
+            comparatorMux2Selector<=2'b01;
               end
+          else //no forwarding
+          begin
+          lowerMux_sel<=2'b00;
+          comparatorMux2Selector<=2'b00;
+          end
             
         end
       
       else if (Mem_WbRegwrite && Mem_WbWriteReg)   //forwarding from Memorystage to ALU & from Memorystage to ID stage
         begin
-          if (Mem_WbWriteReg==ID_Ex_Rs && EX_MemWriteReg!=ID_Ex_Rs)
+          if ((Mem_WbWriteReg==ID_Ex_Rs) && (EX_MemWriteReg!=ID_Ex_Rs))
             begin
             upperMux_sel<=2'b01;
-            comparatorMux1Selector<=2'b01;
+            comparatorMux1Selector<=2'b10;
             end
+          else //no forwarding
+          begin
+          upperMux_sel<=2'b00;
+          comparatorMux1Selector<=2'b00;
+          end
             
 
             
-          if(Mem_WbWriteReg==ID_Ex_Rt && EX_MemWriteReg==ID_Ex_Rt )
+          if((Mem_WbWriteReg==ID_Ex_Rt) && (EX_MemWriteReg==ID_Ex_Rt) )
           begin
             lowerMux_sel<=2'b01;
-            comparatorMux2Selector<=2'b01;
+            comparatorMux2Selector<=2'b10;
+          end
+
+          else //no forwarding
+          begin
+          lowerMux_sel<=2'b00;
+          comparatorMux2Selector<=2'b00;
           end
 
           

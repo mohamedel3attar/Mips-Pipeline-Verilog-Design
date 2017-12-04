@@ -25,7 +25,7 @@ Adder branchAdder(branchNewPC , PCPlus4, shiftOut);
 and branchAndZero(PCSrc, branch, zero);
 Mux2x1_32Bits PCMux(nextPC, PCPlus4, branchNewPC, PCSrc);
 
-
+//pc updated, change in testbench
 always@(clk)
 #100 clk <= ~clk;
 

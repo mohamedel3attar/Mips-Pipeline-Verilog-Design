@@ -1,6 +1,6 @@
-module ALU32Bit(clk, data1, data2, ALUControl, shiftAmount, overFlow, zero, ALUResult, reset);
+module ALU32Bit(data1, data2, ALUControl, shiftAmount, overFlow, zero, ALUResult, reset);
 
-input wire clk, reset;
+input wire reset;
 input wire signed [31:0] data1,data2;
 input wire [3:0] ALUControl;
 input wire [4:0] shiftAmount;

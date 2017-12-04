@@ -17,4 +17,4 @@ always @ (pc)
 	readdata <= Imemory[pc>>2];
 	end			
 		
-endmodule
+endmodule	
