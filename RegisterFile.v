@@ -29,8 +29,7 @@ module RegisterFile(ReadReg1, ReadReg2, WriteReg, WriteData, RegWrite, Clk, Read
 		memory[23] <= 32'h00000000;
 		memory[24] <= 32'h00000000;
 		memory[25] <= 32'h00000000;
-		memory[29] <= 32'd252; // this value should point to the top of data memory, dont forget byte addressing
-		memory[31] <= 32'b0;
+		memory[31] <= 32'h00000000;
 		end
 
 	always @(ReadReg1, ReadReg2)
