@@ -4,7 +4,7 @@ module DataMemory (MemWrite,Memread,address,writeData,clk,readData);
   input [31:0] address,writeData;
   output reg [31:0] readData;
   
-  always@(posedge clk) 
+  always@(negedge clk) 
     begin
       if(MemWrite==1)
         memory[address]<=writeData;

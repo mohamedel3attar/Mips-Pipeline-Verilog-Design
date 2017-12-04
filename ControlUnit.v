@@ -63,7 +63,7 @@ module ControlUnit (opcode,RegDst,branch,Memread,MemtoReg,ALUop,MemWrite,AluSrc,
         sw:           
 
           begin
-          RegDst<=1'bx ;
+          //RegDst<=1'bx ;
           branch<=0 ;
           Memread<=0 ;
           MemtoReg<=0 ;
@@ -76,7 +76,7 @@ module ControlUnit (opcode,RegDst,branch,Memread,MemtoReg,ALUop,MemWrite,AluSrc,
         beq:           
 
           begin
-          RegDst<=1'bx ;
+          //RegDst<=1'bx ;
           branch<= 1;
           Memread<=0 ;
           MemtoReg<=0 ;

@@ -39,7 +39,7 @@ module RegisterFile(ReadReg1, ReadReg2, WriteReg, WriteData, RegWrite, Clk, Read
   		ReadData2 <= memory[ReadReg2];
 	end
 
-	always @(posedge Clk)
+	always @(negedge Clk)
   	begin
   		if (RegWrite == 1)
 		begin
