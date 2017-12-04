@@ -44,8 +44,8 @@ Comparator comparator(comparatorMux1Out, comparatorMux2Out, equalFlag);
 SignExtend signExtend(instructionID[15:0], signExtendOutID);
 ShiftLeft2 shiftLeft2(shiftOut, signExtendOutID);
 Adder branchAdder(branchAddress, shiftOut, PCPlus4ID);
-HazardDetectionUnit hazardUnit(MemReadEX, MemreadMEM, rtEX, instructionID, holdPC, holdIF_ID, hazardMuxSelector);
-Mux2x1_10Bits ID_EXRegMux(controlSignalsID, {RegWriteID, MemtoRegID, MemWriteID, MemReadID, ALUSrc, ALUOpID, RegDstID}
+HazardDetectionUnit hazardUnit(MemReadEX, MemReadMEM, rtEX, instructionID, holdPC, holdIF_ID, hazardMuxSelector);
+Mux2x1_10Bits ID_EXRegMux(controlSignalsID, {RegWriteID, MemtoRegID, MemWriteID, MemReadID, ALUSrcID, ALUOpID, RegDstID}
 			,10'b0000000000, hazardMuxSelector);
 ID_EX_reg ID_EX(RegWriteID, MemtoRegID, MemWriteID, MemReadID, ALUSrcID, ALUOpID, RegDstID, PCPlus4ID,registerData1ID ,registerData2ID
 		,signExtendOutID,instructionID[25:11],PCPlus4EX ,registerData1EX ,registerData2EX ,signExtendOutEX ,rsEX ,rtEX ,rdEX
@@ -57,7 +57,7 @@ Mux3x1_32Bits ALUData1Mux(ALUData1, registerData1EX, regWriteDataMEM, ALUResultM
 Mux3x1_32Bits ALUData2Mux_1(ALUData2Mux_1Out, registerData2EX, regWriteDataMEM, ALUResultMEM, lowerMux_sel);
 Mux2x1_32Bits ALUData2Mux_2(ALUData2, ALUData2Mux_1Out, signExtendOutEX, ALUSrcEX);
 ALUControl AluControl(clk, ALUControl, ALUOpEX, signExtendOutEX[5:0]);
-ALU32Bit ALU(clk, ALUData1, ALUData2, ALUControl, /*shiftAmount*/5'b00000, overFlow, zero, ALUResultEX, reset);
+ALU32Bit ALU(ALUData1, ALUData2, ALUControl, /*shiftAmount*/5'b00000, overFlow, zero, ALUResultEX, reset);
 Mux2x1_5Bits regDstMux(regDstMuxOut, rtEX, rdEX, RegDstEX);
 EX_MemReg EX_MEM(clk, RegWriteEX, MemtoRegEX, MemWriteEX, MemReadEX, ALUResultEX, ALUData2Mux_1Out
 		,regDstMuxOut, RegWriteMEM, MemtoRegMEM, MemWriteMEM, MemReadMEM, ALUResultMEM, memoryWriteDataMEM, writeRegMEM);
@@ -66,18 +66,17 @@ ForwardingUnit forwardingUnit(RegWriteMEM, writeRegMEM, RegWriteWB, writeRegWB, 
 
 
 //MEM_Stage
-DataMemory dataMemory(MemWriteMEM, MemreadMEM, ALUResultMEM, memoryWriteDataMEM, clk, memoryReadDataMEM);
+DataMemory dataMemory(MemWriteMEM, MemReadMEM, ALUResultMEM, memoryWriteDataMEM, clk, memoryReadDataMEM);
 Mem_WbReg MEM_WB(RegWriteMEM, MemtoRegMEM, ALUResultMEM, clk, memoryReadDataMEM, writeRegMEM, RegWriteWB, MemtoRegWB,memoryReadDataWB
 		,ALUResultWB, writeRegWB);
 
 
 //WB_Stage
-Mux2x1_32Bits writeBackMux(regWriteDataMEM, memoryReadDataWB, ALUResultWB, MemtoRegWB);
+Mux2x1_32Bits writeBackMux(regWriteDataMEM, ALUResultWB, memoryReadDataWB, MemtoRegWB);
 
 
 
 //pc updated, change in singel cycle testbench
-
 always@(clk)
 #100 clk <= ~clk;
 
