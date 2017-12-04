@@ -11,8 +11,8 @@ module RegisterFile(ReadReg1, ReadReg2, WriteReg, WriteData, RegWrite, Clk, Read
 	always @(posedge reset) 
 		begin
 		memory[0] <= 32'h00000000;
-		memory[8] <= 32'h00000001;//for testing
-		memory[9] <= 32'h00000002;//for testing
+		memory[8] <= 32'h00000001;
+		memory[9] <= 32'h00000002;
 		memory[10] <= 32'h00000000;
 		memory[11] <= 32'h00000000;
 		memory[12] <= 32'h00000000;
