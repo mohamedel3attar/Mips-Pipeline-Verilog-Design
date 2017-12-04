@@ -57,7 +57,7 @@ Mux3x1_32Bits ALUData1Mux(ALUData1, registerData1EX, regWriteDataMEM, ALUResultM
 Mux3x1_32Bits ALUData2Mux_1(ALUData2Mux_1Out, registerData2EX, regWriteDataMEM, ALUResultMEM, lowerMux_sel);
 Mux2x1_32Bits ALUData2Mux_2(ALUData2, ALUData2Mux_1Out, signExtendOutEX, ALUSrcEX);
 ALUControl AluControl(clk, ALUControl, ALUOpEX, signExtendOutEX[5:0]);
-ALU32Bit ALU(ALUData1, ALUData2, ALUControl, /*shiftAmount*/5'b00000, overFlow, zero, ALUResultEX, reset);
+ALU32Bit ALU(ALUData1, ALUData2, ALUControl, signExtendOutEX[10:6], overFlow, zero, ALUResultEX, reset);
 Mux2x1_5Bits regDstMux(regDstMuxOut, rtEX, rdEX, RegDstEX);
 EX_MemReg EX_MEM(clk, RegWriteEX, MemtoRegEX, MemWriteEX, MemReadEX, ALUResultEX, ALUData2Mux_1Out
 		,regDstMuxOut, RegWriteMEM, MemtoRegMEM, MemWriteMEM, MemReadMEM, ALUResultMEM, memoryWriteDataMEM, writeRegMEM);
