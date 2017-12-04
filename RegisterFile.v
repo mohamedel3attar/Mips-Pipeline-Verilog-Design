@@ -21,11 +21,11 @@ module RegisterFile(ReadReg1, ReadReg2, WriteReg, WriteData, RegWrite, Clk, Read
 		memory[15] <= 32'h00000000;
 		memory[16] <= 32'h00000000;
 		memory[17] <= 32'h00000000;
-		memory[18] <= 32'h00000000;
-		memory[19] <= 32'h00000000;
-		memory[20] <= 32'h00000000;
+		memory[18] <= 32'h00000003;
+		memory[19] <= 32'h00000003;
+		memory[20] <= 32'h00000004;
 		memory[21] <= 32'h00000000;
-		memory[22] <= 32'h00000000;
+		memory[22] <= 32'h00000008;
 		memory[23] <= 32'h00000000;
 		memory[24] <= 32'h00000000;
 		memory[25] <= 32'h00000000;
